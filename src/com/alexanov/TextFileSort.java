@@ -1,16 +1,25 @@
 package com.alexanov;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class TextFileSort {
 
     public static void main(String[] args) throws IOException{
         int linesCount, lineSize;
-        do {
-            BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
-            linesCount = Integer.parseInt(consoleReader.readLine());
-            lineSize = Integer.parseInt(consoleReader.readLine());
-        } while (linesCount <= 0 || lineSize <= 0 || linesCount > 500 || lineSize > 500);
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.print("Количество строк: ");
+                linesCount = Integer.parseInt(sc.nextLine());
+                System.out.print("Размер строк: ");
+                lineSize = Integer.parseInt(sc.nextLine());
+                if (linesCount > 0 && lineSize > 0 && linesCount <= 500 && lineSize <= 500) break;
+                else System.out.println("Некоррестный ввод");
+            } catch (NumberFormatException e) {
+                System.out.println("Некоррестный ввод");
+            }
+        }
         File file = textFileGenerator(linesCount,lineSize);
         BufferedWriter writerOriginalFile = new BufferedWriter(new FileWriter(file.getAbsolutePath()));
         boolean toggler = true;
@@ -28,6 +37,7 @@ public class TextFileSort {
                     if (minStr.compareTo(compareStr) == 0) writerOriginalFile.write(minStr + "\n");
                     else writer.write(compareStr + "\n");
                 }
+                reader.close();
             }
             toggler = !toggler;
         }

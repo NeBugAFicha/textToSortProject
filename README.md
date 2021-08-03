@@ -1,3 +1,12 @@
+Как запустить:
+1) Создаем Java проект (File -> New -> Project... -> Java (Next) -> (Next) -> Называем проект "TextFileSortProject" -> Finish
+2) Клонируем с гитхаба мой готовый проект в папку только что созданного проекта git clone https://github.com/NeBugAFicha/textToSortProject.git
+3) Удаляем папку пустую директорию "src" из нового проекта и переносим все содержимое загруженной директории "textToSortProject" в корневую директорию "TextFileSortProject"
+4) Подключаем две зависимости hamcrest-core-1.3.jar и junit.jar (File -> Project Structure... -> Project Settings -> Libraries :-> New Project Library -> Java: 
+   1) New Project Library -> Java -> hamcrest-core-1.3.jar -> Open -> Choose Modules (TextFileSortProject) -> OK
+   2) New Project Library -> Java -> junit.jar -> Open -> Choose Modules (TextFileSortProject) -> OK
+   3) Apply -> OK
+__________________________________________________________________________________________________________________    
 public static File textFileGenerator(int linesCount, int lineSize) throws IOException : 
  1) Генерируется 3 текстовых файла (testToSort,textToSortBuffer1,textToBuffer2), исходный и два буферных файла
  2) В диапазоне таблицы кодировки ASCII (48-122) заполняется строка размером lineSize случайными символами и затем строка добавляется в два файла textToSort и textToSortBuffer1
@@ -12,5 +21,3 @@ public static File textFileGenerator(int linesCount, int lineSize) throws IOExce
  7) Выход из "бесконечного" цикла while(true) происходит за счет условия отсутствия стартового значения для minStr
  8) Закрытие файла записи textToSort;
 Конец
-    
-P.S Диапазон допустимых символов таблицы кодировки ASCII
